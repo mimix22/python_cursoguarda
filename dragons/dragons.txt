@@ -1,0 +1,2 @@
+FireDragon,170,80
+IceDragon,170,90

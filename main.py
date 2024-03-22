@@ -5,7 +5,7 @@ import lista_heroi1
 
 import lista_oponentes
 
-Enredo = (input("Em um reino distante,acontece o torneio dos jogos anuais de Dragoes e herois ,onde herois enfrentam dragoes por puro esporte,e os mesmos competem pela vitoria e pelotitulo de heroi ou dragao mais forte"))
+Enredo = (input("Em um reino muito distante,acontece o torneio dos jogos anuais de Dragoes e herois ,onde herois enfrentam dragoes por puro esporte,e os mesmos competem pela vitoria e pelotitulo de heroi ou dragao mais forte"))
 
 
 Start = input("escolha seu personagem:")

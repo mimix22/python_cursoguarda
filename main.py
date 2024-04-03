@@ -29,6 +29,10 @@ else:
 heroi_escolhido = lista_heroi1.lista_heroi[escolha-1]
 oponente = lista_oponentes.lista_oponente[random.randrange(1,2)]
 
+
+heroi_escolhido.salvar_arquivo("heroiescolhido.txt")
+
+
 while heroi_escolhido.vida > 0 and oponente.vida > 0:
     heroi_escolhido.atacar(oponente)
     oponente.atacar(heroi_escolhido)
@@ -36,7 +40,6 @@ if heroi_escolhido.vida > 0:
     print(f"{heroi_escolhido.nome} venceu {oponente.nome}")
 else:
     print(f"{heroi_escolhido.nome} foi derrotado por {oponente.nome}")
-
 
 
 

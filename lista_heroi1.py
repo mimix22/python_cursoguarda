@@ -1,3 +1,25 @@
+import sqlite3
+
+conn = sqlite3.connect("heroes_dragoes.db")
+cursor = conn.cursor()
+
+#criação da tabela para herois
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS heroes 
+                (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                health INTEGER,
+                attack INTEGER)''')
+
+#criação da tabela para dragoes
+cursor.execute('''CREATE TABLE IF NOT EXISTS dragons 
+                (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 name TEXT,
+                 health INTEGER,
+                 attack INTEGER)''')
+
+conn.commit()
+conn.close()
 
 class personagem:
     def __init__(self, nome, vida, ataque):
@@ -8,6 +30,13 @@ class personagem:
     def salvar_arquivo(self, nome_arquivo):
         with open(nome_arquivo, 'a') as arquivo:
             arquivo.write(f"{self.nome},{self.vida},{self.ataque}\n")
+    def insert_hero (self):
+        conn = sqlite3.connect("heroes_dragoes.db")
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO heroes (name, health,  attack) VALUES (?, ?, ?)",
+                       (self.nome, self.vida, self.ataque))
+        conn.commit()
+        conn.close()
 
     @classmethod
     def recuperar_arquivo(cls, nome_arquivo):
@@ -19,7 +48,18 @@ class personagem:
                 personagem = cls(nome, int(hp), int(atk), [])
                 personagens.append(personagem)
         return personagens
-        
+
+    def get_heroes(self):
+        conn = sqlite3.connect("heroes_dragoes.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM heroes")
+        heroes_data = cursor.fetchall()
+        conn.close()
+
+        heroes = [personagem(*data[1:]) for data in heroes_data]
+        print(f"f{heroes.name}")
+
+        return heroes
 class jogador (personagem):
     def __init__(self, nome, vida, ataque):
         super().__init__(nome, vida, ataque)

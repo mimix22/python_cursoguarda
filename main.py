@@ -13,7 +13,6 @@ print(Start + "1- thor/2-zeus")
 
 
 
-
 escolha = int(input("digite o numero do heroi"))
 if escolha == 1:
     fala = ["eu sou o thor e irei derrotar todos em meu caminho!"]
@@ -31,6 +30,9 @@ oponente = lista_oponentes.lista_oponente[random.randrange(1,2)]
 
 
 heroi_escolhido.salvar_arquivo("heroiescolhido.txt")
+heroi_escolhido.insert_hero()
+heroi_escolhido.get_heroes()
+
 
 
 while heroi_escolhido.vida > 0 and oponente.vida > 0:
